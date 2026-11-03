@@ -1,0 +1,13 @@
+../Core/Src/precharge.c:41:6:precharge_control_init	6
+../Core/Src/precharge.c:103:6:precharge_fsm_tick	6
+../Core/Src/precharge.c:133:13:FSM_Precharge	3
+../Core/Src/precharge.c:148:13:FSM_Normal_Operation	2
+../Core/Src/precharge.c:159:13:FSM_Fault	1
+../Core/Src/precharge.c:167:13:UpdateSensorReadings	26
+../Core/Src/precharge.c:252:16:CheckForFaults	9
+../Core/Src/precharge.c:287:16:IsPrechargeComplete	1
+../Core/Src/precharge.c:293:13:SetContactor	2
+../Core/Src/precharge.c:299:13:PowerMotors	2
+../Core/Src/precharge.c:318:18:get_current_state	1
+../Core/Src/precharge.c:322:13:get_current_fault	1
+../Core/Src/precharge.c:326:6:get_sensor_data	7

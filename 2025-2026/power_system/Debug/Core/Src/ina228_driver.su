@@ -1,0 +1,12 @@
+../Core/Src/ina228_driver.c:17:26:INA228_WriteRegister16	32	static
+../Core/Src/ina228_driver.c:26:26:INA228_ReadRegister16	40	static
+../Core/Src/ina228_driver.c:41:26:INA228_ReadRegister24_20bit	40	static
+../Core/Src/ina228_driver.c:65:26:INA228_ReadRegister24_Full	40	static
+../Core/Src/ina228_driver.c:80:17:INA228_CalculateCalibration	24	static
+../Core/Src/ina228_driver.c:87:19:INA228_Init	32	static
+../Core/Src/ina228_driver.c:118:19:INA228_ReadManufacturerID	16	static
+../Core/Src/ina228_driver.c:124:19:INA228_ReadVoltage	24	static
+../Core/Src/ina228_driver.c:138:19:INA228_ReadCurrent	32	static
+../Core/Src/ina228_driver.c:152:19:INA228_ReadPower	32	static
+../Core/Src/ina228_driver.c:166:19:INA228_CheckHealth	24	static
+../Core/Src/ina228_driver.c:185:19:INA228_ConfigureAlerts	48	static
