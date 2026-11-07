@@ -28,11 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-static void UART_ReceiveLine(void);
-static int  Parse_Command(void);
-static void Acquire_Data(void);
-static void Transmit_Data(void);
-static void Transmit_Data_Test(void);
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */

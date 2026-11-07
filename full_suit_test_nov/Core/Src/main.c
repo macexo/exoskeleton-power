@@ -101,6 +101,7 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
 
+
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2,
                     GPIO_PIN_RESET);
 
@@ -164,23 +165,47 @@ static void UART_ReceiveLine(void)
 /* START,<rate_hz>,<duration_s>,<sensors> (last field optional: 1) */
 static int Parse_Command(void)
 {
-  char extra;
-  unsigned long rate, duration, sensors = 1;
-  int matched = sscanf(rxBuf, "START,%lu,%lu,%lu %c",
-                       &rate, &duration, &sensors, &extra);
-  if (matched != 2 && matched != 3)
-    return 0;
-  /* Conservative maximum until timing is measured on real hardware. */
-  if (rate < 1 || rate > 200 || duration < 1 || duration > 86400 ||
-      (sensors != 1 && sensors != 2))
-    return 0;
-  if ((uint64_t)rate * duration > UINT32_MAX)
-    return 0;
-  sampling_rate = (uint32_t)rate;
-  total_time = (uint32_t)duration;
-  sensor_count = (uint8_t)sensors;
-  num_samples = sampling_rate * total_time;
-  return 1;
+    unsigned long rate = 0;
+    unsigned long duration = 0;
+    unsigned long sensors = 1;
+    char extra;
+
+    int matched = sscanf(
+        rxBuf,
+        "START,%lu,%lu,%lu%c",
+        &rate,
+        &duration,
+        &sensors,
+        &extra
+    );
+    char debug[128];
+
+    int len = snprintf(debug, sizeof(debug),
+        "DEBUG: matched=%d rate=%lu duration=%lu sensors=%lu\r\n",
+        matched, rate, duration, sensors);
+
+    HAL_UART_Transmit(&huart2,
+                      (uint8_t *)debug,
+                      len,
+                      HAL_MAX_DELAY);
+
+    if (matched != 3)
+        return 0;
+
+    if (rate < 1 || rate > 200 ||
+        duration < 1 || duration > 86400 ||
+        (sensors != 1 && sensors != 2))
+        return 0;
+
+    if ((uint64_t)rate * duration > UINT32_MAX)
+        return 0;
+
+    sampling_rate = (uint32_t)rate;
+    total_time = (uint32_t)duration;
+    sensor_count = (uint8_t)sensors;
+    num_samples = sampling_rate * total_time;
+
+    return 1;
 }
 
 /* No large SRAM buffers: one measurement row is streamed at a time. */

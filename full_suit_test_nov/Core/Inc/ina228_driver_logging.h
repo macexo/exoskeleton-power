@@ -13,9 +13,9 @@
 
 /* INA228 I2C Addresses */
 // NOTE: must shift device address left 1 bit because STM32 HAL expects 8-bit address format (7-bit address frame + 1 R/W bit)
-#define INA228_ADDR1     (0x4A << 1)   // A1=SDA, A0=SDA
+//#define INA228_ADDR1     (0x4A << 1)   // A1=SDA, A0=SDA
 #define INA228_ADDR2     (0x40 << 1)   // A1=GND, A0=GND
-
+#define INA228_ADDR1     (0x41 << 1)   // 0x41 dev board
 
 /* INA228 Register Addresses */
 #define INA228_REG_CONFIG       	0x00
