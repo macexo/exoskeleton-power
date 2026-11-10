@@ -14,7 +14,7 @@ Each academic year's work is organized into a separate folder. This allows the t
 | Folder | Description |
 |---|---|
 | [`2025-2026/`](2025-2026/) | Previous year's power system development, including STM32 firmware, precharge control, voltage and current monitoring, and CAN communication. |
-| `Future FOlder/` | Current year's power system development. To be added as development progresses. |
+| [`full_suit_test_nov/`](full_suit_test_nov/) | 2026–2027 full suit test data logger: STM32 firmware, one/two INA228 sensors, Raspberry Pi CSV logging, and plotting. |
 
 ### 2025–2026 Development
 
