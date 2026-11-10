@@ -1,4 +1,3 @@
-
 import argparse
 import csv
 import os
@@ -29,8 +28,9 @@ parser.add_argument(
     "--rate",
     type=int,
     default=100,
-    help="Sampling frequency in Hz"
+    help="sampling frequency"
 )
+
 
 parser.add_argument(
     "--duration",
@@ -140,6 +140,12 @@ try:
             "ascii", errors="replace"
         ).strip()
 
+        while response.startswith("DEBUG:"):
+            print(response)
+            response = ser.readline().decode(
+                "ascii", errors="replace"
+            ).strip()
+
         if response != "OK":
             raise RuntimeError(
                 f"STM32 did not acknowledge command: {response!r}"
@@ -175,7 +181,7 @@ try:
 
                 last_data_time = time.monotonic()
 
-                if line == "DONE":
+                if line.startswith("DONE,"):
                     completed = True
                     print("STM32 reported acquisition complete.")
                     break
