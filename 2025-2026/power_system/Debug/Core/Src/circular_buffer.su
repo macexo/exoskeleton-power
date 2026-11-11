@@ -1,3 +1,0 @@
-../Core/Src/circular_buffer.c:13:6:circ_buf_init	16	static
-../Core/Src/circular_buffer.c:18:6:circ_buf_push	24	static
-../Core/Src/circular_buffer.c:32:7:circ_buf_average	16	static
